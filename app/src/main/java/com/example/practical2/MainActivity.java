@@ -2,6 +2,7 @@ package com.example.practical2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -21,10 +22,22 @@ public class MainActivity extends AppCompatActivity {
         Toast toast=Toast.makeText(this,R.string.toast_message,Toast.LENGTH_SHORT);
         toast.show();
     }
-    public void countUp(View view){
-       ++mCount;
-       if(mShowCount !=null)
-           mShowCount.setText(Integer.toString(mCount));
+    public void countUp(View view) {
+        mCount++;
+        if (mShowCount != null) {
+            findViewById(R.id.button_zero).setBackgroundColor(Color.MAGENTA);
+            mShowCount.setText(Integer.toString(mCount));
+        }
+        if(mCount%2==1)
+            view.setBackgroundColor(Color.GREEN);
+        else
+            view.setBackgroundColor(Color.RED);
+    }
 
+    public void countZero(View view) {
+        mCount=0;
+        mShowCount.setText(Integer.toString(mCount));
+        findViewById(R.id.button_zero).setBackgroundColor(Color.GRAY);
+        findViewById(R.id.button_count).setBackgroundColor(Color.BLUE);
     }
 }
